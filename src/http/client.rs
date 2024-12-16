@@ -167,13 +167,10 @@ impl HttpBuilder {
 
 fn parse_token(token: impl AsRef<str>) -> String {
     let token = token.as_ref().trim();
-
-    if token.starts_with("Bot ") || token.starts_with("Bearer ") {
-        token.to_string()
-    } else {
-        format!("Bot {token}")
-    }
+    // Simply return the token as-is without adding prefixes
+    token.to_string()
 }
+
 
 fn reason_into_header(reason: &str) -> Headers {
     let mut headers = Headers::new();
